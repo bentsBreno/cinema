@@ -2,19 +2,22 @@ package sala;
 
 public class Mapa {
     protected Assento[][] assentos;
+    
+    private final static int ROW_SIZE = 12;
+    private final static int COLUMN_SIZE = 14;
 
     public Mapa() {
-        this.assentos = new Assento[12][14];
-        for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 14; j++) {
+        this.assentos = new Assento[ROW_SIZE][COLUMN_SIZE];
+        for (int i = 0; i < ROW_SIZE; i++) {
+            for (int j = 0; j < COLUMN_SIZE; j++) {
                 this.assentos[i][j] = new Assento();
             }
         }
     }
 
     public void imprimir() {
-        for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 14; j++) {
+        for (int i = 0; i < ROW_SIZE; i++) {
+            for (int j = 0; j < COLUMN_SIZE; j++) {
                 if (assentos[i][j].isOcupado()) {
                     System.out.print("X "); // cadeira ocupada
                 } else {
