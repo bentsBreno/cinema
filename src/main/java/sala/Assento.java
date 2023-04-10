@@ -3,7 +3,9 @@ package sala;
 public class Assento {
     protected boolean ocupado;
 
-    public Assento() { this.ocupado = false; }
+    public Assento() {
+        this.ocupado = false;
+    }
 
     public boolean isOcupado() {
         return ocupado;
