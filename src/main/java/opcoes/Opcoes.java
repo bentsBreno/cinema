@@ -29,7 +29,7 @@ public class Opcoes {
             System.out.println("O assento "
                     + (char) (filaEscolhida + 'A')
                     + (cadeiraEscolhida + 1)
-                    + " reservado com sucesso!");
+                    + " foi reservado com sucesso!");
         }
 
         setFluxoFoiBemSucedido(true);

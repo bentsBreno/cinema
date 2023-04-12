@@ -2,15 +2,9 @@ import org.junit.Test;
 import sala.Assento;
 import sala.Mapa;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import static org.junit.Assert.*;
 
-public class MapaTest {
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-
+public class MapaTest extends InputTestBase {
     @Test
     public void InstanciaMapa_ObtenhoAssentos_ValidoQuantidades(){
         Mapa target = new Mapa();
@@ -26,8 +20,8 @@ public class MapaTest {
         Mapa target = new Mapa();
         setUpStream();
 
-
         target.imprimir();
+
         String expected =
                 """
                         _ _ _ _ _ _ _ _ _ _ _ _ _ _ A\r
@@ -47,14 +41,6 @@ public class MapaTest {
         String actual = outContent.toString();
 
         assertEquals(actual, expected);
-        restoreStream();
-    }
-
-    private void setUpStream() {
-        System.setOut(new PrintStream(outContent));
-    }
-
-    private void restoreStream() {
-        System.setOut(originalOut);
+        restoreOutputStream();
     }
 }
