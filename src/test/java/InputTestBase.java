@@ -1,3 +1,6 @@
+import org.junit.After;
+import org.junit.Before;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -5,13 +8,12 @@ import java.io.PrintStream;
 
 public abstract class InputTestBase {
     protected final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    protected final InputStream backupInContent = System.in;
-    protected final PrintStream originalOut = System.out;
+    @After
+    public void after(){
+        setUpStream();
+    }
     protected void setUpStream() {
         System.setOut(new PrintStream(outContent));
-    }
-    protected void restoreOutputStream() {
-        System.setOut(originalOut);
     }
 
     protected String obterUltimaLinhaImpressaNoConsole(){

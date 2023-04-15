@@ -52,7 +52,7 @@ public class OpcoesTest extends InputTestBase {
     }
 
     @Test
-    public void InstanciaOpcoes_InputoTiposErrados_Erros(){
+    public void InstanciaOpcoes_InputoTiposErrados_ErrosNaFilaEscolhida(){
         Mapa mapa = new Mapa();
         Opcoes target = new Opcoes(mapa);
         setUpStream();
@@ -62,15 +62,37 @@ public class OpcoesTest extends InputTestBase {
 
         setarSystemIn(userInput);
 
-        target.reservar();
+        try {
+            target.reservar();
+            Assert.fail();
+        } catch (IllegalArgumentException ex) {
+            String expected = "A fila escolhida deve estar entre A e L.";
+            String actual = ex.getMessage();
 
-        String expected = "O assento A1 já está ocupado!";
-        String actual = obterUltimaLinhaImpressaNoConsole();
-
-        Assert.assertThrows(IllegalArgumentException.class, () ->target.reservar(), "a");
+            Assert.assertEquals(expected, actual);
+        }
     }
 
-    private void ReservarAssentoA1(){
+    @Test
+    public void InstanciaOpcoes_InputoTiposErrados_ErrosNoAssentoEscolhido(){
+        Mapa mapa = new Mapa();
+        Opcoes target = new Opcoes(mapa);
+        setUpStream();
 
+        String userInput = String.format("A%sA",
+                System.lineSeparator(),
+                System.lineSeparator());
+
+        setarSystemIn(userInput);
+
+        try {
+            target.reservar();
+            Assert.fail();
+        } catch (IllegalArgumentException ex) {
+            String expected = "A cadeira escolhida deve ser um número.";
+            String actual = ex.getMessage();
+
+            Assert.assertEquals(expected, actual);
+        }
     }
 }
