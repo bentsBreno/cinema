@@ -9,7 +9,7 @@ public class Opcoes {
     private Mapa mapa;
     private int filaEscolhida;
     private int cadeiraEscolhida;
-    private final String ONLY_NUMBERS_REGEX = "[0-9]+";
+    private final String APENAS_NUMERO_REGEX = "[0-9]+";
     protected boolean fluxoFoiBemSucedido;
     public Opcoes(Mapa mapa) {
         this.mapa = mapa;
@@ -71,6 +71,7 @@ public class Opcoes {
 
         setFluxoFoiBemSucedido(true);
     }
+    
 
     public void mostrarMapa() {
         mapa.imprimir();
@@ -84,7 +85,7 @@ public class Opcoes {
     }
 
     private void validarCadeira(String input) {
-        if (!input.matches(ONLY_NUMBERS_REGEX)){
+        if (!input.matches(APENAS_NUMERO_REGEX)){
             setFluxoFoiBemSucedido(false);
             throw new IllegalArgumentException("A cadeira escolhida deve ser um número.");
         }

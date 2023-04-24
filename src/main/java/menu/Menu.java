@@ -27,10 +27,12 @@ public class Menu {
             try {
                 iniciarFaseEscolhida();
                 opcoes.resetarAssento();
+                opcoes.setFluxoFoiBemSucedido(true);
             }
             catch (IllegalArgumentException ex){
                 System.out.println(ANSI_RED + ex.getMessage() + ANSI_RESET);
                 Thread.sleep(100);
+                opcoes.setFluxoFoiBemSucedido(false);
             }
 
             deveMostrarMenuDeEscolhas = opcoes.getFluxoFoiBemSucedido();
